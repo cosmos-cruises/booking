@@ -1,15 +1,15 @@
 {
-  "forever-mars-app": {
-    "scope": "cosmos-cruises.forever-mars",
-    "version": "0.0.4",
-    "mainFile": "index.ts",
-    "rootDir": "forever-mars/forever-mars-app"
-  },
-  "pages/booking-page": {
-    "scope": "cosmos-cruises.booking",
-    "version": "0.0.1",
-    "mainFile": "index.ts",
-    "rootDir": "booking/pages/booking-page"
-  },
-  "$schema-version": "15.0.0"
+    "forever-mars-app": {
+        scope: "cosmos-cruises.forever-mars",
+        version: "0.0.4",
+        mainFile: "index.ts",
+        rootDir: "forever-mars/forever-mars-app",
+    },
+    "pages/booking-page": {
+        scope: "cosmos-cruises.booking",
+        version: "0.0.1",
+        mainFile: "index.ts",
+        rootDir: "booking/pages/booking-page",
+    },
+    "$schema-version": "15.0.0",
 }
