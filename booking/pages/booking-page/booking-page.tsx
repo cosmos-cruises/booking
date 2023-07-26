@@ -44,7 +44,7 @@ export function BookingPage({ email, socialLinks, ...rest }: BookingPageProps) {
         <Breadcrumb crumbs={[{ crumb: 'Book a trip.' }]} />
         <Margin mt={MarginType.MEDIUM}>
           <Typography variant="body2" fontSize={18}>
-            Why do you want to fly to Mars forever? You can also email us
+            Why do you want to fly to Mars forever? You can also e-mail us
             directly at <b>{email}</b>
           </Typography>
         </Margin>
