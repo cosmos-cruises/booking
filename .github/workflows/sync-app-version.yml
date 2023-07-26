@@ -1,0 +1,43 @@
+name: Sync Component Version
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          repository: 'cosmos-cruises/marketing' # Target repo
+          token: ${{ secrets.GITHUB_TOKEN }} # Make sure this token has write access to the target repo
+          path: 'target-repo'
+
+      - name: Update version in bitmap file
+        run: |
+          cd target-repo
+          python3 -c "
+          import json
+          # Load data from source bitmap
+          with open('../.bitmap') as source:
+            source_data = json.load(source)
+          # Load data from target bitmap
+          with open('.bitmap', 'r+') as target: 
+            target_data = json.load(target)
+            # Get version from source bitmap and update it in target bitmap
+            target_data['forever-mars-app']['version'] = source_data['forever-mars-app']['version']
+            target.seek(0)
+            json.dump(target_data, target, indent=4)
+            target.truncate()"
+
+      - name: Commit and push
+        run: |
+          cd target-repo
+          git config user.name 'GitHub Action'
+          git config user.email 'action@github.com'
+          git add .bitmap
+          git commit -m "Update component version"
+          git push
