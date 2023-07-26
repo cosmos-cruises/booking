@@ -10,34 +10,56 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          repository: 'cosmos-cruises/booking' # Source repo
+          path: 'source-repo'
+          token: ${{ secrets.GITHUB_TOKEN }} # Make sure this token has write access to the source repo
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
           repository: 'cosmos-cruises/marketing' # Target repo
-          token: ${{ secrets.GITHUB_TOKEN }} # Make sure this token has write access to the target repo
           path: 'target-repo'
+          token: ${{ secrets.GITHUB_TOKEN }} # Make sure this token has write access to the target repo
 
-      - name: Update version in bitmap file
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install json5
+
+      - name: Get version from source repo
+        id: get_version
+        run: |
+          cd source-repo
+          echo "::set-output name=version::$(python -c "
+          import json5
+          with open('.bitmap', 'r') as f: 
+              data = json5.load(f)
+              print(data['forever-mars-app']['version'])")"
+
+      - name: Update version in target repo
         run: |
           cd target-repo
-          python3 -c "
-          import json
-          # Load data from source bitmap
-          with open('../.bitmap') as source:
-            source_data = json.load(source)
-          # Load data from target bitmap
-          with open('.bitmap', 'r+') as target: 
-            target_data = json.load(target)
-            # Get version from source bitmap and update it in target bitmap
-            target_data['forever-mars-app']['version'] = source_data['forever-mars-app']['version']
-            target.seek(0)
-            json.dump(target_data, target, indent=4)
-            target.truncate()"
+          python -c "
+          import json5
+          with open('.bitmap', 'r+') as f: 
+              data = json5.load(f)
+              data['forever-mars-app']['version'] = '${{ steps.get_version.outputs.version }}'
+              f.seek(0)
+              json5.dump(data, f, indent=4)
+              f.truncate()"
 
-      - name: Commit and push
+      - name: Commit and push if it changed
         run: |
           cd target-repo
-          git config user.name 'GitHub Action'
-          git config user.email 'action@github.com'
-          git add .bitmap
-          git commit -m "Update component version"
+          git diff
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "Update version" || echo "No changes to commit"
           git push
