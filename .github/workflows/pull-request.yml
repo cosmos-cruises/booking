@@ -22,16 +22,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set Git user
-        run: |
-          git config user.email "github-actions@github.com"
-          git config user.name "GitHub Actions"
-
-      - name: Merge latest from main
-        run: |
-          git fetch origin main
-          git merge origin/main --allow-unrelated-histories
-
       - name: Initialize Bit
         uses: bit-tasks/init@v1
 
