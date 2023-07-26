@@ -24,8 +24,8 @@ jobs:
 
       - name: Pull latest from main
         run: |
-          git checkout main
-          git pull
+          git fetch origin main
+          git merge origin/main
 
       - name: Initialize Bit
         uses: bit-tasks/init@v1
