@@ -18,9 +18,17 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
+
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Pull latest from main
+        run: |
+          git checkout main
+          git pull
+
       - name: Initialize Bit
         uses: bit-tasks/init@v1
+
       - name: Bit Pull Request
         uses: bit-tasks/pull-request@main

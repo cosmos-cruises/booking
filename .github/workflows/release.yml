@@ -26,6 +26,10 @@ jobs:
           echo "::set-output name=user_email::$(git log -1 --pretty=format:'%ae')"
       - name: Initialize Bit
         uses: bit-tasks/init@v1
+      - name: Bit Import and Checkout
+        run: |
+          bit import
+          bit checkout head
       - name: Bit Tag and Export
         uses: bit-tasks/tag-export@v1
       - name: Commit Bitmap
