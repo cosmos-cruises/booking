@@ -1,0 +1,38 @@
+---
+description: A component that renders a Page for the Contact section
+labels: ["page", "contact me page"]
+---
+
+import { MemoryRouter } from "react-router-dom";
+import { ThemeProvider } from "@showoff/design.theme.theme-provider";
+import { lightTheme } from "@showoff/design.theme.light-theme";
+import { BookingPage } from "./booking-page";
+
+A component that renders a contact us page.
+
+### Component usage
+
+Use with `ThemeProvider` to apply themes.
+Use with a React Router wrapper to enable routing.
+
+```js
+<MemoryRouter>
+  <BookingPage
+    email="hello@tobias.com"
+    socialLinks={[{ name: "github", url: "https://github.com" }]}
+  />
+</MemoryRouter>
+```
+
+### Render the contact us page on light theme.
+
+```js live
+<MemoryRouter>
+  <ThemeProvider theme={lightTheme()}>
+    <BookingPage
+      email="hello@tobias.com"
+      socialLinks={[{ name: "github", url: "https://github.com" }]}
+    />
+  </ThemeProvider>
+</MemoryRouter>
+```
