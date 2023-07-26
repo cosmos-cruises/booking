@@ -1,9 +1,9 @@
 name: Sync Component Version
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - main
+    paths:
+      - '.bitmap'
+  workflow_dispatch:
 
 jobs:
   sync-version:
@@ -21,7 +21,7 @@ jobs:
         with:
           repository: 'cosmos-cruises/marketing' # Target repo
           path: 'target-repo'
-          token: ${{ secrets.GITHUB_TOKEN }} # Make sure this token has write access to the target repo
+          token: ${{ secrets.PAT }} # Make sure this token has write access to the target repo
 
       - name: Set up Python
         uses: actions/setup-python@v2
