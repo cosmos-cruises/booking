@@ -12,6 +12,8 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_CONFIG_USER_TOKEN}}
+      GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+      GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
     steps:
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -34,6 +36,3 @@ jobs:
         uses: bit-tasks/tag-export@v1
       - name: Commit Bitmap
         uses: bit-tasks/commit-bitmap@v1
-        with:
-          git-user-name: ${{ steps.commit.outputs.user_name }}
-          git-user-email: ${{ steps.commit.outputs.user_email }}
