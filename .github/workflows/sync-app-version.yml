@@ -48,11 +48,12 @@ jobs:
           cd target-repo
           python -c "
           import json5
+          import json
           with open('.bitmap', 'r+') as f: 
               data = json5.load(f)
               data['forever-mars-app']['version'] = '${{ steps.get_version.outputs.version }}'
               f.seek(0)
-              json5.dump(data, f, indent=4)
+              json.dump(data, f, indent=4)
               f.truncate()"
 
       - name: Commit and push if it changed
