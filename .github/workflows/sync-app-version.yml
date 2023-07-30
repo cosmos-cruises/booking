@@ -1,8 +1,9 @@
 name: Sync Component Version
 on:
-  push:
-    paths:
-      - '.bitmap'
+  workflow_run:
+    workflows: ['Release Components']
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
