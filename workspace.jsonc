@@ -27,7 +27,7 @@
     /**
      * default scope for all components in workspace.
      **/
-    "defaultScope": "cosmos-cruises.marketing"
+    "defaultScope": "cosmos-cruises.booking"
   },
   /**
    * main configuration for component dependency resolution.
