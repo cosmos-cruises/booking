@@ -1,6 +1,6 @@
 import { ThemeOptions, alpha } from '@mui/material';
-import { darkTheme } from '@cosmos-cruises/design.themes.dark-theme';
-import { lightTheme } from '@cosmos-cruises/design.themes.light-theme';
+import { darkTheme } from '@cosmos-cruises/cosmos-design.theme.dark-theme';
+import { lightTheme } from '@cosmos-cruises/cosmos-design.theme.light-theme';
 
 const lightDefaults: ThemeOptions = {
   palette: { primary: { main: '#B32E29' } },

@@ -2,9 +2,9 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { Main } from '@showoff/personal-portfolio.layouts.main';
 import { Logo } from '@showoff/design.brand.logo';
-import { BookingPage } from './booking-page';
+import { BookATrip } from './book-a-trip';
 
-export const SampleBookingPage = () => (
+export const SampleBookATrip = () => (
   <MemoryRouter>
     <Main
       headerProps={{
@@ -20,10 +20,7 @@ export const SampleBookingPage = () => (
         rightContent: `© ${new Date().getFullYear()} Ober. All Rights Reserved.`,
       }}
     >
-      <BookingPage
-        email="hello@tobias.com"
-        socialLinks={[{ name: 'github', url: 'https://github.com' }]}
-      />
+      <BookATrip email="red-listlessness@cosmos-cruises.com" />
     </Main>
   </MemoryRouter>
 );

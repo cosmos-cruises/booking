@@ -1,20 +1,19 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import {
   SettingsProvider,
   SettingsConsumer,
-} from '@cosmos-cruises/forever-mars.contexts.settings-context';
-import { Main } from '@cosmos-cruises/forever-mars.layouts.main';
-import { Homepage } from '@cosmos-cruises/marketing.pages.homepage';
-import { ThemeProvider } from '@showoff/design.theme.theme-provider';
-import { BookingPage } from '@cosmos-cruises/booking.pages.booking-page';
+} from '@cosmo-cruises/forever-mars.contexts.settings-context';
+import { Main } from '@cosmo-cruises/forever-mars.layouts.main';
+import { Homepage } from '@cosmo-cruises/marketing.pages.homepage';
+import { ThemeProvider } from '@cosmo-cruises/design.themes.theme-provider';
+import { BookATrip } from '@cosmo-cruises/booking.pages.book-a-trip';
 import {
   SITE_FOOTER_META,
   SITE_HEADER_LINKS,
-  ORG_SOCIAL_LINKS,
   ORG_PROFILE,
-} from '@cosmos-cruises/marketing.constants.data';
+} from '@cosmo-cruises/marketing.constants.data';
 import { darkMarsTheme, lightMarsTheme } from './themes';
 
 export function ForeverMarsApp() {
@@ -25,7 +24,7 @@ export function ForeverMarsApp() {
     <>
       <Helmet>
         <title>
-          Forever Mars - Your Way Getting to Mars. And Staying There.
+          Forever Mars - Your Path to Reaching Mars. And Staying There.
         </title>
       </Helmet>
       <SettingsProvider>
@@ -39,21 +38,11 @@ export function ForeverMarsApp() {
                 <Routes>
                   <Route
                     path="/"
-                    element={
-                      <Homepage
-                        profile={ORG_PROFILE}
-                        socialLinks={ORG_SOCIAL_LINKS.links}
-                      />
-                    }
+                    element={<Homepage profile={ORG_PROFILE} />}
                   />
                   <Route
                     path="/booking"
-                    element={
-                      <BookingPage
-                        email={ORG_PROFILE.email}
-                        socialLinks={ORG_SOCIAL_LINKS.links}
-                      />
-                    }
+                    element={<BookATrip email={ORG_PROFILE.email} />}
                   />
                 </Routes>
               </Main>

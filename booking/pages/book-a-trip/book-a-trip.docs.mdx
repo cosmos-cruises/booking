@@ -6,7 +6,7 @@ labels: ["page", "contact me page"]
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "@showoff/design.theme.theme-provider";
 import { lightTheme } from "@showoff/design.theme.light-theme";
-import { BookingPage } from "./booking-page";
+import { BookATrip } from "./book-a-trip";
 
 A component that renders a contact us page.
 
@@ -17,7 +17,7 @@ Use with a React Router wrapper to enable routing.
 
 ```js
 <MemoryRouter>
-  <BookingPage
+  <BookATrip
     email="hello@tobias.com"
     socialLinks={[{ name: "github", url: "https://github.com" }]}
   />
@@ -29,7 +29,7 @@ Use with a React Router wrapper to enable routing.
 ```js live
 <MemoryRouter>
   <ThemeProvider theme={lightTheme()}>
-    <BookingPage
+    <BookATrip
       email="hello@tobias.com"
       socialLinks={[{ name: "github", url: "https://github.com" }]}
     />

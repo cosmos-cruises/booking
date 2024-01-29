@@ -1,20 +1,15 @@
-name: Build and Verify
+name: Bit Verify
 on:
-  push:
-    branches-ignore:
-      - main
   workflow_dispatch:
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_CONFIG_USER_TOKEN}}
+      GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+      GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+      BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_CONFIG_USER_TOKEN }}
     steps:
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Initialize Bit

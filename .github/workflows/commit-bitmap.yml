@@ -1,13 +1,10 @@
-name: Bit Pull Request
+name: Bit Commit Bitmap
 on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
+  workflow_dispatch:
 permissions:
-  pull-requests: write
+  contents: write
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -18,6 +15,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Initialize Bit
-        uses: bit-tasks/init@v1 
-      - name: Bit Pull Request
-        uses: bit-tasks/pull-request@v1
+        uses: bit-tasks/init@v1
+      - name: Bit Tag and Export
+        uses: bit-tasks/tag-export@v1
+      - name: Commit Bitmap
+        uses: bit-tasks/commit-bitmap@v1

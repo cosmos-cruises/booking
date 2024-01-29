@@ -1,13 +1,12 @@
-name: Bit Pull Request
+name: Tag and Export
 on:
   pull_request:
-    types:
-      - opened
-      - synchronize
-permissions:
-  pull-requests: write
+    branches: 
+      - main
+    types: [closed]
 jobs:
-  build:
+  release:
+    if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -18,6 +17,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Initialize Bit
-        uses: bit-tasks/init@v1 
-      - name: Bit Pull Request
-        uses: bit-tasks/pull-request@v1
+        uses: bit-tasks/init@v1
+      - name: Bit Tag and Export
+        uses: bit-tasks/tag-export@v1
