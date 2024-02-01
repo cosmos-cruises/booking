@@ -16,8 +16,8 @@ export function BookATrip({ email, ...rest }: BookATripProps) {
         <Breadcrumb crumbs={[{ crumb: 'Book a trip.' }]} />
         <Margin mt={MarginType.MEDIUM}>
           <Typography variant="body2" fontSize={18}>
-            Thinking of moving to Mars forever and ever? Book a flight or e-mail
-            us directly at <b>{email}</b>
+            Thinking of moving to Mars forever? Book a flight or e-mail us
+            directly at <b>{email}</b>
           </Typography>
         </Margin>
         <Margin mt={MarginType.MEDIUM}>
