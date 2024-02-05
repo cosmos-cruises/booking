@@ -59,5 +59,6 @@
   },
   "teambit.workspace/workspace-config-files": {
     "enableWorkspaceConfigWrite": true
-  }
+  },
+"cosmo-cruises.forever-mars/forever-mars-app": {}
 }
