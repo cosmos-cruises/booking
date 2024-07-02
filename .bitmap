@@ -9,17 +9,31 @@
  */
 
 {
-    "forever-mars-app": {
-        "name": "forever-mars-app",
-        "scope": "cosmo-cruises.forever-mars",
-        "version": "0.0.3",
+    "api/mars-submission-handler": {
+        "name": "api/mars-submission-handler",
+        "scope": "cosmo-cruises.booking",
+        "version": "0.0.2",
         "mainFile": "index.ts",
-        "rootDir": "forever-mars/forever-mars-app"
+        "rootDir": "booking/api/mars-submission-handler"
+    },
+    "entities/travel-booking": {
+        "name": "entities/travel-booking",
+        "scope": "cosmo-cruises.booking",
+        "version": "0.0.2",
+        "mainFile": "index.ts",
+        "rootDir": "booking/entities/travel-booking"
+    },
+    "forms/book-a-mars-trip": {
+        "name": "forms/book-a-mars-trip",
+        "scope": "cosmo-cruises.booking",
+        "version": "0.0.4",
+        "mainFile": "index.ts",
+        "rootDir": "booking/forms/book-a-mars-trip"
     },
     "pages/book-a-trip": {
         "name": "pages/book-a-trip",
         "scope": "cosmo-cruises.booking",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "mainFile": "index.ts",
         "rootDir": "booking/pages/book-a-trip"
     },
